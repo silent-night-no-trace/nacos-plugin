@@ -32,5 +32,6 @@ public class ConfigInfoAggrMapperByKingbase extends BaseConfigInfoAggrMapper {
     public String getDataSource() {
         return DatabaseTypeConstant.KINGBASE;
     }
+    public String getFunction(String functionName) {return functionName;}
 
 }

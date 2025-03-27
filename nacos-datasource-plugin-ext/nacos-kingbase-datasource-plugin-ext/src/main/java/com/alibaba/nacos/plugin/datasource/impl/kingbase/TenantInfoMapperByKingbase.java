@@ -31,5 +31,6 @@ public class TenantInfoMapperByKingbase extends BaseTenantInfoMapper {
     public String getDataSource() {
         return DatabaseTypeConstant.KINGBASE;
     }
+    public String getFunction(String functionName) {return functionName;}
 
 }
