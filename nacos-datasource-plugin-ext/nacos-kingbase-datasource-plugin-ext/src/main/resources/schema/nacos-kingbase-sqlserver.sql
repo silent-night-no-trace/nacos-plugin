@@ -1,0 +1,64 @@
+-- 1. 表 config_info
+DROP TABLE IF EXISTS config_info;
+
+CREATE TABLE config_info ( id bigint IDENTITY(1,1) NOT NULL, data_id varchar(255) NOT NULL, group_id varchar(255), content nvarchar(max) NOT NULL, md5 varchar(32), gmt_create datetime2(6) NOT NULL, gmt_modified datetime2(6) NOT NULL, src_user nvarchar(max), src_ip varchar(20), app_name varchar(128), tenant_id varchar(128), c_desc varchar(256), c_use varchar(64), effect varchar(64), type varchar(64), c_schema nvarchar(max), encrypted_data_key nvarchar(max) );
+
+CREATE UNIQUE INDEX uk_configinfo_datagrouptenant ON config_info (data_id, group_id, tenant_id);
+
+ALTER TABLE config_info ADD CONSTRAINT config_info_pkey PRIMARY KEY (id);
+-- 2. 表 config_info_aggr
+DROP TABLE IF EXISTS config_info_aggr;
+CREATE TABLE config_info_aggr ( id bigint IDENTITY(1,1) NOT NULL, data_id varchar(255) NOT NULL, group_id varchar(255) NOT NULL, datum_id varchar(255) NOT NULL, content nvarchar(max) NOT NULL, gmt_modified datetime2(6) NOT NULL, app_name varchar(128), tenant_id varchar(128) );
+CREATE UNIQUE INDEX uk_configinfoaggr_datagrouptenantdatum ON config_info_aggr (data_id, group_id, tenant_id, datum_id);
+ALTER TABLE config_info_aggr ADD CONSTRAINT config_info_aggr_pkey PRIMARY KEY (id);
+-- 3. 表 config_info_beta
+DROP TABLE IF EXISTS config_info_beta;
+CREATE TABLE config_info_beta ( id bigint IDENTITY(1,1) NOT NULL, data_id varchar(255) NOT NULL, group_id varchar(128) NOT NULL, app_name varchar(128), content nvarchar(max) NOT NULL, beta_ips varchar(1024), md5 varchar(32), gmt_create datetime2(6) NOT NULL, gmt_modified datetime2(6) NOT NULL, src_user nvarchar(max), src_ip varchar(20), tenant_id varchar(128), encrypted_data_key nvarchar(max) );
+CREATE UNIQUE INDEX uk_configinfobeta_datagrouptenant ON config_info_beta (data_id, group_id, tenant_id);
+ALTER TABLE config_info_beta ADD CONSTRAINT config_info_beta_pkey PRIMARY KEY (id);
+-- 4. 表 config_info_tag
+DROP TABLE IF EXISTS config_info_tag;
+CREATE TABLE config_info_tag ( id bigint IDENTITY(1,1) NOT NULL, data_id varchar(255) NOT NULL, group_id varchar(128) NOT NULL, tenant_id varchar(128), tag_id varchar(128) NOT NULL, app_name varchar(128), content nvarchar(max) NOT NULL, md5 varchar(32), gmt_create datetime2(6) NOT NULL, gmt_modified datetime2(6) NOT NULL, src_user nvarchar(max), src_ip varchar(20) );
+CREATE UNIQUE INDEX uk_configinfotag_datagrouptenanttag ON config_info_tag (data_id, group_id, tenant_id, tag_id);
+ALTER TABLE config_info_tag ADD CONSTRAINT config_info_tag_pkey PRIMARY KEY (id);
+-- 5. 表 config_tags_relation
+DROP TABLE IF EXISTS config_tags_relation;
+-- 注意：仅保留 nid 为 IDENTITY 列，其它列均为普通列
+CREATE TABLE config_tags_relation ( id bigint NOT NULL,tag_name varchar(128) NOT NULL, tag_type varchar(64), data_id varchar(255) NOT NULL, group_id varchar(128) NOT NULL, tenant_id varchar(128), nid bigint IDENTITY(1,1) NOT NULL  );
+CREATE INDEX idx_tenant_id ON config_tags_relation (tenant_id);
+CREATE UNIQUE INDEX uk_configtagrelation_configidtag ON config_tags_relation (id, tag_name, tag_type);
+ALTER TABLE config_tags_relation ADD CONSTRAINT config_tags_relation_pkey PRIMARY KEY (nid);
+-- 6. 表 group_capacity
+DROP TABLE IF EXISTS group_capacity;
+CREATE TABLE group_capacity ( id bigint IDENTITY(1,1) NOT NULL, group_id varchar(128) NOT NULL, quota int NOT NULL, usage int NOT NULL, max_size int NOT NULL, max_aggr_count int NOT NULL, max_aggr_size int NOT NULL, max_history_count int NOT NULL, gmt_create datetime2(6) NOT NULL, gmt_modified datetime2(6) NOT NULL );
+CREATE UNIQUE INDEX uk_group_id ON group_capacity (group_id);
+ALTER TABLE group_capacity ADD CONSTRAINT group_capacity_pkey PRIMARY KEY (id);
+
+-- 7. 表 his_config_info
+DROP TABLE IF EXISTS his_config_info;
+CREATE TABLE his_config_info ( id bigint NOT NULL,nid bigint IDENTITY(1,1) NOT NULL, data_id varchar(255) NOT NULL, group_id varchar(128) NOT NULL, app_name varchar(128), content nvarchar(max) NOT NULL, md5 varchar(32), gmt_create datetime2(6) NOT NULL CONSTRAINT DF_his_config_info_gmt_create DEFAULT ('2010-05-05 00:00:00'), gmt_modified datetime2(6) NOT NULL, src_user nvarchar(max), src_ip varchar(20), op_type char(10), tenant_id varchar(128), encrypted_data_key nvarchar(max) );
+CREATE INDEX idx_did ON his_config_info (data_id);
+CREATE INDEX idx_gmt_create ON his_config_info (gmt_create);
+CREATE INDEX idx_gmt_modified ON his_config_info (gmt_modified);
+ALTER TABLE his_config_info ADD CONSTRAINT his_config_info_pkey PRIMARY KEY (nid);
+-- 8. 表 permissions
+DROP TABLE IF EXISTS permissions;
+CREATE TABLE permissions ( role varchar(50) NOT NULL, resource varchar(512) NOT NULL, action varchar(8) NOT NULL );
+CREATE UNIQUE INDEX uk_role_permission ON permissions (role, resource, action);
+-- 9. 表 roles
+DROP TABLE IF EXISTS roles;
+CREATE TABLE roles ( username varchar(50) NOT NULL, role varchar(50) NOT NULL );
+CREATE UNIQUE INDEX uk_username_role ON roles (username, role);
+
+-- 10. 表 tenant_capacity
+DROP TABLE IF EXISTS tenant_capacity;
+CREATE TABLE tenant_capacity ( id bigint IDENTITY(1,1) NOT NULL, tenant_id varchar(128) NOT NULL, quota int NOT NULL, usage int NOT NULL, max_size int NOT NULL, max_aggr_count int NOT NULL, max_aggr_size int NOT NULL, max_history_count int NOT NULL, gmt_create datetime2(6) NOT NULL, gmt_modified datetime2(6) NOT NULL );
+CREATE UNIQUE INDEX uk_tenant_id ON tenant_capacity (tenant_id);
+ALTER TABLE tenant_capacity ADD CONSTRAINT tenant_capacity_pkey PRIMARY KEY (id);
+-- 11. 表 tenant_info
+DROP TABLE IF EXISTS tenant_info;
+CREATE TABLE tenant_info ( id bigint IDENTITY(1,1) NOT NULL, kp varchar(128) NOT NULL, tenant_id varchar(128), tenant_name varchar(128), tenant_desc varchar(256), create_source varchar(32), gmt_create bigint NOT NULL, gmt_modified bigint NOT NULL );
+CREATE UNIQUE INDEX uk_tenant_info_kptenantid ON tenant_info (kp, tenant_id);
+-- 12. 表 users
+DROP TABLE IF EXISTS users;
+CREATE TABLE users ( username varchar(50) NOT NULL, password varchar(500) NOT NULL, enabled bit NOT NULL ); 

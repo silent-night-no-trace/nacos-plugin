@@ -14,4 +14,7 @@ public class KingbaseDatabaseDialect extends AbstractDatabaseDialect {
     public String getType() {
         return DatabaseTypeConstant.KINGBASE;
     }
+
+
+
 }
