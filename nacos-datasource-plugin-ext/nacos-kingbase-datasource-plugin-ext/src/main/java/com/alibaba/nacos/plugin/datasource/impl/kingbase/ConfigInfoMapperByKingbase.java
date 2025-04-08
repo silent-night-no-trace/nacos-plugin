@@ -19,6 +19,10 @@ package com.alibaba.nacos.plugin.datasource.impl.kingbase;
 import com.alibaba.nacos.plugin.datasource.constants.DatabaseTypeConstant;
 import com.alibaba.nacos.plugin.datasource.constants.PrimaryKeyConstant;
 import com.alibaba.nacos.plugin.datasource.impl.base.BaseConfigInfoMapper;
+import com.alibaba.nacos.plugin.datasource.model.MapperContext;
+import com.alibaba.nacos.plugin.datasource.model.MapperResult;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The kingbase implementation of ConfigInfoMapper.
@@ -32,4 +36,9 @@ public class ConfigInfoMapperByKingbase extends BaseConfigInfoMapper {
         return DatabaseTypeConstant.KINGBASE;
     }
     public String getFunction(String functionName) {return functionName;}
+
+
+
+
+
 }
