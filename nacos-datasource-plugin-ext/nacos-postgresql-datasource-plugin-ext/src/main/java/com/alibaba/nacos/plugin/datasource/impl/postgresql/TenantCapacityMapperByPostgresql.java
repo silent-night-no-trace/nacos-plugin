@@ -14,24 +14,22 @@
  * limitations under the License.
  */
 
-package com.alibaba.nacos.plugin.datasource.impl.kingbase;
+package com.alibaba.nacos.plugin.datasource.impl.postgresql;
 
 import com.alibaba.nacos.plugin.datasource.constants.DatabaseTypeConstant;
-import com.alibaba.nacos.plugin.datasource.constants.PrimaryKeyConstant;
-import com.alibaba.nacos.plugin.datasource.impl.base.BaseGroupCapacityMapper;
+import com.alibaba.nacos.plugin.datasource.impl.base.BaseTenantCapacityMapper;
 
 /**
- * The kingbase implementation of GroupCapacityMapper.
+ * The postgresql implementation of TenantCapacityMapper.
  *
- * @author leon
+ * @author Long Yu
  **/
-public class GroupCapacityMapperByKingbase extends BaseGroupCapacityMapper {
-
+public class TenantCapacityMapperByPostgresql extends BaseTenantCapacityMapper {
+    
     @Override
     public String getDataSource() {
-        return DatabaseTypeConstant.KINGBASE;
+        return DatabaseTypeConstant.POSTGRESQL;
     }
-    public String getFunction(String functionName) {return functionName;}
-
-
+    
+    
 }

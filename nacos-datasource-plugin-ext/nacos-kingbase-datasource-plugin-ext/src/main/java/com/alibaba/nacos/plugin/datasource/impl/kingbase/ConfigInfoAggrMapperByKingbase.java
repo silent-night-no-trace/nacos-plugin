@@ -34,4 +34,5 @@ public class ConfigInfoAggrMapperByKingbase extends BaseConfigInfoAggrMapper {
     }
     public String getFunction(String functionName) {return functionName;}
 
+
 }

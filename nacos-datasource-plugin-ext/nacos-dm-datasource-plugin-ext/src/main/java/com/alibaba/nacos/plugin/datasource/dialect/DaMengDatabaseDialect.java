@@ -14,24 +14,26 @@
  * limitations under the License.
  */
 
-package com.alibaba.nacos.plugin.datasource.impl.kingbase;
+package com.alibaba.nacos.plugin.datasource.dialect;
 
 import com.alibaba.nacos.plugin.datasource.constants.DatabaseTypeConstant;
 import com.alibaba.nacos.plugin.datasource.constants.PrimaryKeyConstant;
-import com.alibaba.nacos.plugin.datasource.impl.base.BaseGroupCapacityMapper;
 
 /**
- * The kingbase implementation of GroupCapacityMapper.
+ * dameng database dialect.
  *
- * @author leon
- **/
-public class GroupCapacityMapperByKingbase extends BaseGroupCapacityMapper {
+ * @author Xiao Yong
+ */
+public class DaMengDatabaseDialect extends AbstractDatabaseDialect {
 
     @Override
-    public String getDataSource() {
-        return DatabaseTypeConstant.KINGBASE;
+    public String[] getReturnPrimaryKeys() {
+        return PrimaryKeyConstant.UPPER_RETURN_PRIMARY_KEYS;
     }
-    public String getFunction(String functionName) {return functionName;}
 
+    @Override
+    public String getType() {
+        return DatabaseTypeConstant.DM;
+    }
 
 }

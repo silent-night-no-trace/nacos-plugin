@@ -34,4 +34,6 @@ public class ConfigInfoTagMapperByKingbase extends BaseConfigInfoTagMapper {
     }
     public String getFunction(String functionName) {return functionName;}
 
+
+
 }

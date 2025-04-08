@@ -1,5 +1,5 @@
 /*
- * Copyright 1999-2022 Alibaba Group Holding Ltd.
+ * Copyright 1999-2023 Alibaba Group Holding Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,25 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.alibaba.nacos.plugin.datasource.impl.oracle;
 
-package com.alibaba.nacos.plugin.datasource.impl.kingbase;
+import com.alibaba.nacos.plugin.datasource.mapper.TenantInfoMapper;
 
-import com.alibaba.nacos.plugin.datasource.constants.DatabaseTypeConstant;
-import com.alibaba.nacos.plugin.datasource.constants.PrimaryKeyConstant;
-import com.alibaba.nacos.plugin.datasource.impl.base.BaseGroupCapacityMapper;
-
-/**
- * The kingbase implementation of GroupCapacityMapper.
- *
- * @author leon
- **/
-public class GroupCapacityMapperByKingbase extends BaseGroupCapacityMapper {
-
-    @Override
-    public String getDataSource() {
-        return DatabaseTypeConstant.KINGBASE;
-    }
+/***
+ * @author onewe
+ */
+public class TenantInfoMapperByOracle extends AbstractOracleMapper implements TenantInfoMapper {
     public String getFunction(String functionName) {return functionName;}
-
-
 }

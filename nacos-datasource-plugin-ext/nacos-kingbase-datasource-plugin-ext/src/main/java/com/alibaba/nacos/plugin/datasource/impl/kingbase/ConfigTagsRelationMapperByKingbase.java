@@ -34,4 +34,5 @@ public class ConfigTagsRelationMapperByKingbase extends BaseConfigTagsRelationMa
     }
     public String getFunction(String functionName) {return functionName;}
 
+
 }
