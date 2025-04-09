@@ -65,5 +65,4 @@ public class ConfigInfoTagMapperByOracle extends AbstractOracleMapper
 				CollectionUtils.list(content, md5, srcIp, srcUser, gmtModified, appName, dataId, groupId, tenantId,
 						tagId, oldMd5));
 	}
-	public String getFunction(String functionName) {return functionName;}
 }

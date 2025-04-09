@@ -69,5 +69,5 @@ public class ConfigInfoBetaMapperByOracle extends AbstractOracleMapper
 		
 		return new MapperResult(sql, paramList);
 	}
-	public String getFunction(String functionName) {return functionName;}
+
 }

@@ -14,19 +14,14 @@ db.password.0=SYSDBA
 db.pool.config.driverClassName=com.kingbase8.Driver
 ```
 
-### 1.2、增加kingbase数据库驱动
-
-
-```xml
-<dependency>
-    <groupId>cn.com.kingbase</groupId>
-    <artifactId>kingbase8</artifactId>
-    <version>8.6.0</version>
-</dependency>
-```
-
-### 1.3、表结构初始化
+### 1.2、表结构初始化
 
 使用KES-mysql时在nacos数据库中执行schema/nacos-kingbase-mysql.sql文件
 使用KES-oracle时在nacos数据库中执行schema/nacos-kingbase-oracle.sql文件
-````
+
+
+### 1.3、KES-sqlserver模式使用
+
+需本插件配合nacos-mssql-datasource-plugin-ext插件一起使用，详见nacos-mssql-datasource-plugin-ext模块readme文件
+
+

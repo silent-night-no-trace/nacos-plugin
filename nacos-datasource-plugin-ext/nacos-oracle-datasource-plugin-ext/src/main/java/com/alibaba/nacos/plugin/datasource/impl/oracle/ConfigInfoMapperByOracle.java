@@ -569,6 +569,5 @@ public class ConfigInfoMapperByOracle extends AbstractOracleMapper
 				+ " FROM ( " + innerSql + " )" + " g, config_info t  WHERE g.id = t.id ";
 		return new MapperResult(sql, sqlArgs);
 	}
-	public String getFunction(String functionName) {return functionName;}
 
 }

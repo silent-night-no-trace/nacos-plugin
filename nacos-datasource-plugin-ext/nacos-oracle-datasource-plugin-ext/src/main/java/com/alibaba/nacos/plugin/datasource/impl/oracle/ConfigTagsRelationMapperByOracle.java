@@ -227,6 +227,5 @@ public class ConfigTagsRelationMapperByOracle extends AbstractOracleMapper
 		String sql = getLimitPageSqlWithOffset(sqlFetchRows + where, startRow, pageSize);
 		return new MapperResult(sql, paramList);
 	}
-	public String getFunction(String functionName) {return functionName;}
 	
 }

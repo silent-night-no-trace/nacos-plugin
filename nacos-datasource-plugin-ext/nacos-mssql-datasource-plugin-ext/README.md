@@ -15,6 +15,9 @@ db.pool.config.driverClassName=com.kingbase8.Driver
 ```
 
 ### 1.2、表结构初始化
-
 使用KES-sqlserver时在nacos数据库中执行schema/nacos-kingbase-sqlserver.sql文件
-````
+
+
+### 1.3、 插件使用范围
+本插件支持sqlserver数据库和KES-sqlserver数据库
+其中KES-sqlserver数据库需要将本插件与naocs-kingbase-datasource-plugin-ext插件一同放入plugins文件夹中使用
