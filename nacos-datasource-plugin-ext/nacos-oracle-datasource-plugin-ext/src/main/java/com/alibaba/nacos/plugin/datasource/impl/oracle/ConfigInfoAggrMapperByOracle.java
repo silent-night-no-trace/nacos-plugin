@@ -122,4 +122,5 @@ public class ConfigInfoAggrMapperByOracle extends AbstractOracleMapper
 		
 		return new MapperResult(sql, paramList);
 	}
+
 }

@@ -24,6 +24,11 @@
             <version>${mssql-jdbc.version}</version>
         </dependency>
         <dependency>
+            <groupId>cn.com.kingbase</groupId>
+            <artifactId>kingbase8</artifactId>
+            <version>8.6.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba.nacos</groupId>
             <artifactId>nacos-datasource-plugin-ext-base</artifactId>
             <version>${revision}</version>

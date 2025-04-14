@@ -35,41 +35,9 @@ public class ConfigInfoMapperByKingbase extends BaseConfigInfoMapper {
     public String getDataSource() {
         return DatabaseTypeConstant.KINGBASE;
     }
-
-    @Override
-    public String getFunction(String functionName) {
-    if ("NOW()".equalsIgnoreCase(functionName) || "NOW(3)".equalsIgnoreCase(functionName)) {
-        return "GETDATE()"; // 统一改成 GETDATE()
-    }
-    return functionName;
-}
-
-    @Override
-    public MapperResult updateConfigInfoAtomicCas(MapperContext context) {
-     List<Object> paramList = new ArrayList<>();
-     paramList.add(context.getUpdateParameter("content"));
-     paramList.add(context.getUpdateParameter("md5"));
-     paramList.add(context.getUpdateParameter("srcIp"));
-     paramList.add(context.getUpdateParameter("srcUser"));
-     paramList.add(context.getUpdateParameter("app_name"));
-     paramList.add(context.getUpdateParameter("cDesc"));
-     paramList.add(context.getUpdateParameter("cUse"));
-     paramList.add(context.getUpdateParameter("effect"));
-     paramList.add(context.getUpdateParameter("type"));
-     paramList.add(context.getUpdateParameter("cSchema"));
-     paramList.add(context.getUpdateParameter("encrypted_data_key"));
-     paramList.add(context.getWhereParameter("dataId"));
-     paramList.add(context.getWhereParameter("groupId"));
-     paramList.add(context.getWhereParameter("tenantId"));
-     paramList.add(context.getWhereParameter("md5"));
-
-    String sql = "UPDATE config_info SET content=?, md5=?, src_ip=?, src_user=?, gmt_modified=GETDATE(), app_name=?, c_desc=?, c_use=?, effect=?, type=?, c_schema=?, encrypted_data_key=? WHERE data_id=? AND group_id=? AND tenant_id=? AND (md5=? OR md5 IS NULL OR md5='') " ;
+    public String getFunction(String functionName) {return functionName;}
 
 
-
-
-        return new MapperResult(sql, paramList);
-}
 
 
 

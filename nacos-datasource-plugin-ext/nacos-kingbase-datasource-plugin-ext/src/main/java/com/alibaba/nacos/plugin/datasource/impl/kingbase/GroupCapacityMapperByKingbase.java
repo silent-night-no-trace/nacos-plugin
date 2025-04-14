@@ -31,14 +31,7 @@ public class GroupCapacityMapperByKingbase extends BaseGroupCapacityMapper {
     public String getDataSource() {
         return DatabaseTypeConstant.KINGBASE;
     }
-//    public String getFunction(String functionName) {return functionName;}
-@Override
-public String getFunction(String functionName) {
-    if ("NOW()".equalsIgnoreCase(functionName) || "NOW(3)".equalsIgnoreCase(functionName)) {
-        return "GETDATE()"; // 统一改成 GETDATE()
-    }
-    return functionName;
-}
+    public String getFunction(String functionName) {return functionName;}
 
 
 }

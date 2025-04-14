@@ -30,4 +30,11 @@ public class TenantInfoMapperBySqlServer extends BaseTenantInfoMapper {
     public String getDataSource() {
         return DatabaseTypeConstant.SQLSERVER;
     }
+    @Override
+    public String getFunction(String functionName) {
+        if ("NOW()".equalsIgnoreCase(functionName) || "NOW(3)".equalsIgnoreCase(functionName)) {
+            return "GETDATE()"; // 统一改成 GETDATE()
+        }
+        return functionName;
+    }
 }
