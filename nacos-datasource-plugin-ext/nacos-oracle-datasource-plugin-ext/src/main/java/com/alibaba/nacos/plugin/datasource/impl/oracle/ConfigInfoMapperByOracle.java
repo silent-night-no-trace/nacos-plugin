@@ -256,7 +256,7 @@ public class ConfigInfoMapperByOracle extends AbstractOracleMapper
 		paramList.add(context.getWhereParameter(FieldConstant.MD5));
 
 		String sqlBuilder = "UPDATE config_info SET "
-				+ "content=?, md5 = ?, src_ip=?,src_user=?,gmt_modified=?, app_name=?,c_desc=?,c_use=?,effect=?,type=?,c_schema=? "
+				+ "content=?, md5 = ?, src_ip=?,src_user=?,gmt_modified=SYSDATE, app_name=?,c_desc=?,c_use=?,effect=?,type=?,c_schema=? "
 				+ "WHERE data_id=? AND group_id=? " + " AND tenant_id=NVL(?, '"
 				+ NamespaceUtil.getNamespaceDefaultId() + "') "
 				+ " AND (md5=? OR md5 IS NULL OR md5='')";
