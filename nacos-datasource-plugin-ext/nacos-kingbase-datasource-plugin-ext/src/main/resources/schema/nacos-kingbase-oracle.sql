@@ -18,7 +18,7 @@
 -- Table structure for config_info
 -- ----------------------------
 CREATE TABLE config_info (
-                             id serial NOT NULL,
+                             id bigserial NOT NULL,
                              data_id varchar(255) NOT NULL,
                              group_id varchar(255),
                              content text NOT NULL,
@@ -53,7 +53,7 @@ COMMENT ON TABLE config_info IS 'config_info';
 -- Table structure for config_info_aggr
 -- ----------------------------
 CREATE TABLE config_info_aggr (
-                                  id serial NOT NULL,
+                                  id bigserial NOT NULL,
                                   data_id varchar(255) NOT NULL,
                                   group_id varchar(255) NOT NULL,
                                   datum_id varchar(255) NOT NULL,
@@ -76,7 +76,7 @@ COMMENT ON TABLE config_info_aggr IS '增加租户字段';
 -- Table structure for config_info_beta
 -- ----------------------------
 CREATE TABLE config_info_beta (
-                                  id serial NOT NULL,
+                                  id bigserial NOT NULL,
                                   data_id varchar(255) NOT NULL,
                                   group_id varchar(128) NOT NULL,
                                   app_name varchar(128),
@@ -110,7 +110,7 @@ COMMENT ON TABLE config_info_beta IS 'config_info_beta';
 -- Table structure for config_info_tag
 -- ----------------------------
 CREATE TABLE config_info_tag (
-                                 id serial NOT NULL,
+                                 id bigserial NOT NULL,
                                  data_id varchar(255) NOT NULL,
                                  group_id varchar(128) NOT NULL,
                                  tenant_id varchar(128) DEFAULT 'PUBLIC',
@@ -142,13 +142,13 @@ COMMENT ON TABLE config_info_tag IS 'config_info_tag';
 -- Table structure for config_tags_relation
 -- ----------------------------
 CREATE TABLE config_tags_relation (
-                                      id serial NOT NULL,
+                                      id bigserial NOT NULL,
                                       tag_name varchar(128) NOT NULL,
                                       tag_type varchar(64),
                                       data_id varchar(255) NOT NULL,
                                       group_id varchar(128) NOT NULL,
                                       tenant_id varchar(128) DEFAULT 'PUBLIC',
-                                      nid serial NOT NULL
+                                      nid bigserial NOT NULL
 );
 
 COMMENT ON COLUMN config_tags_relation.id IS 'id';
@@ -163,7 +163,7 @@ COMMENT ON TABLE config_tags_relation IS 'config_tag_relation';
 -- Table structure for group_capacity
 -- ----------------------------
 CREATE TABLE group_capacity (
-                                id serial NOT NULL,
+                                id bigserial NOT NULL,
                                 group_id varchar(128) NOT NULL,
                                 quota int NOT NULL,
                                 usage int NOT NULL,
@@ -191,8 +191,8 @@ COMMENT ON TABLE group_capacity IS '集群、各Group容量信息表';
 -- Table structure for his_config_info
 -- ----------------------------
 CREATE TABLE his_config_info (
-                                 id int NOT NULL,
-                                 nid serial NOT NULL,
+                                 id bigint NOT NULL,
+                                 nid bigserial NOT NULL,
                                  data_id varchar(255) NOT NULL,
                                  group_id varchar(128) NOT NULL,
                                  app_name varchar(128),
@@ -238,7 +238,7 @@ INSERT INTO roles VALUES ('nacos', 'ROLE_ADMIN');
 -- Table structure for tenant_capacity
 -- ----------------------------
 CREATE TABLE tenant_capacity (
-                                 id serial NOT NULL,
+                                 id bigserial NOT NULL,
                                  tenant_id varchar(128) NOT NULL,
                                  quota int NOT NULL,
                                  usage int NOT NULL,
@@ -266,14 +266,14 @@ COMMENT ON TABLE tenant_capacity IS '租户容量信息表';
 -- Table structure for tenant_info
 -- ----------------------------
 CREATE TABLE tenant_info (
-                             id serial NOT NULL,
+                             id bigserial NOT NULL,
                              kp varchar(128) NOT NULL,
                              tenant_id varchar(128) DEFAULT 'PUBLIC',
                              tenant_name varchar(128),
                              tenant_desc varchar(256),
                              create_source varchar(32),
-                             gmt_create int NOT NULL,
-                             gmt_modified int NOT NULL
+                             gmt_create bigint NOT NULL,
+                             gmt_modified bigint NOT NULL
 );
 
 COMMENT ON COLUMN tenant_info.id IS 'id';

@@ -243,7 +243,6 @@ public class ConfigInfoMapperByOracle extends AbstractOracleMapper
 		paramList.add(context.getUpdateParameter(FieldConstant.MD5));
 		paramList.add(context.getUpdateParameter(FieldConstant.SRC_IP));
 		paramList.add(context.getUpdateParameter(FieldConstant.SRC_USER));
-		paramList.add(context.getUpdateParameter(FieldConstant.GMT_MODIFIED));
 		paramList.add(context.getUpdateParameter(FieldConstant.APP_NAME));
 		paramList.add(context.getUpdateParameter(FieldConstant.C_DESC));
 		paramList.add(context.getUpdateParameter(FieldConstant.C_USE));
