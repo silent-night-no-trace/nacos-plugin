@@ -42,5 +42,13 @@ public class HistoryConfigInfoMapperByPostgresql extends HistoryConfigInfoMapper
     public String getDataSource() {
         return DatabaseTypeConstant.POSTGRESQL;
     }
-    
+    @Override
+    public String getFunction(String functionName) {
+        if ("NOW()".equalsIgnoreCase(functionName) || "NOW(3)".equalsIgnoreCase(functionName)) {
+            return "CURRENT_TIMESTAMP"; // PostgreSQL 当前时间函数
+        }
+        return functionName;
+    }
+
+
 }
