@@ -17,6 +17,23 @@
 -- ----------------------------
 -- Table structure for config_info
 -- ----------------------------
+-- ----------------------------
+-- Drop tables if exist
+-- ----------------------------
+DROP TABLE IF EXISTS config_info CASCADE;
+DROP TABLE IF EXISTS config_info_aggr CASCADE;
+DROP TABLE IF EXISTS config_info_beta CASCADE;
+DROP TABLE IF EXISTS config_info_tag CASCADE;
+DROP TABLE IF EXISTS config_tags_relation CASCADE;
+DROP TABLE IF EXISTS group_capacity CASCADE;
+DROP TABLE IF EXISTS his_config_info CASCADE;
+DROP TABLE IF EXISTS permissions CASCADE;
+DROP TABLE IF EXISTS roles CASCADE;
+DROP TABLE IF EXISTS tenant_capacity CASCADE;
+DROP TABLE IF EXISTS tenant_info CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+
+
 CREATE TABLE config_info (
                              id bigserial NOT NULL,
                              data_id varchar(255) NOT NULL,
