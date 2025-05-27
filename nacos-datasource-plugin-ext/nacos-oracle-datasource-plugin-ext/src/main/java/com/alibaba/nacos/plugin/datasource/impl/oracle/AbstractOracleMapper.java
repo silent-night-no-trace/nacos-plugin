@@ -37,6 +37,14 @@ public abstract class AbstractOracleMapper extends AbstractMapper {
 	}
 
 	@Override
+	public String getFunction(String functionName) {
+		if ("NOW()".equalsIgnoreCase(functionName) || "NOW(3)".equalsIgnoreCase(functionName)) {
+			return "SYSTIMESTAMP"; // Oracle 的当前时间函数
+		}
+		return functionName;
+	}
+
+	@Override
 	public String getDataSource() {
 		return DatabaseTypeConstant.ORACLE;
 	}

@@ -14,27 +14,25 @@
  * limitations under the License.
  */
 
-package com.alibaba.nacos.plugin.datasource.impl.mssql;
+package com.alibaba.nacos.plugin.datasource.impl.kingbase;
 
 import com.alibaba.nacos.plugin.datasource.constants.DatabaseTypeConstant;
-import com.alibaba.nacos.plugin.datasource.impl.base.BaseTenantInfoMapper;
+import com.alibaba.nacos.plugin.datasource.constants.PrimaryKeyConstant;
+import com.alibaba.nacos.plugin.datasource.impl.base.BaseConfigTagsRelationMapper;
 
 /**
- * The SQL Server implementation of TenantInfoMapper.
+ * The kingbase implementation of ConfigTagsRelationMapper.
  *
- * @author QY Li
+ * @author leon
  **/
-public class TenantInfoMapperBySqlServer extends BaseTenantInfoMapper {
+
+public class ConfigTagsRelationMapperByKingbase extends BaseConfigTagsRelationMapper {
 
     @Override
     public String getDataSource() {
-        return DatabaseTypeConstant.SQLSERVER;
+        return DatabaseTypeConstant.KINGBASE;
     }
-    @Override
-    public String getFunction(String functionName) {
-        if ("NOW()".equalsIgnoreCase(functionName) || "NOW(3)".equalsIgnoreCase(functionName)) {
-            return "GETDATE()"; // 统一改成 GETDATE()
-        }
-        return functionName;
-    }
+    public String getFunction(String functionName) {return functionName;}
+
+
 }

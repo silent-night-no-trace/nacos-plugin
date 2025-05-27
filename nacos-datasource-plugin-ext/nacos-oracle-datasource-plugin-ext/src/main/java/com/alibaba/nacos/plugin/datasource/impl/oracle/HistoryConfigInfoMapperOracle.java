@@ -75,4 +75,5 @@ public class HistoryConfigInfoMapperOracle extends AbstractOracleMapper
 						.getNamespaceDefaultId() + "') " + " ORDER BY nid DESC";
 		return new MapperResult(sqlBuilder, sqlArgs);
 	}
+
 }
