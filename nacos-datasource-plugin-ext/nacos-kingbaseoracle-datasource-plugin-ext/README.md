@@ -1,4 +1,4 @@
-# Nacos数据库 Kinbase适配插件（适配mysql模式）
+# Nacos数据库 Kinbase适配插件（适配oracle模式）
 
 ## 一、注意事项
 
@@ -16,12 +16,13 @@ db.pool.config.driverClassName=com.kingbase8.Driver
 
 ### 1.2、表结构初始化
 
-使用KES-mysql时在nacos数据库中执行schema/nacos-kingbase-mysql.sql文件
+使用KES-oracle时在nacos数据库中执行schema/nacos-kingbase-oracle.sql文件
 
 
 
 ### 1.3、KES-sqlserver模式使用
 
 使用sqlserver模块插件，详见nacos-mssql-datasource-plugin-ext模块readme文件
+使用mysql模块插件，详见nacos-kingbase-datasource-plugin-ext模块readme文件
 
 
