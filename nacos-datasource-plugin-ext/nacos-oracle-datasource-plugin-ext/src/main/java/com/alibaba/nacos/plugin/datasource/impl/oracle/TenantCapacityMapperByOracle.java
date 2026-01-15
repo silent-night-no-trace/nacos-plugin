@@ -102,4 +102,5 @@ public class TenantCapacityMapperByOracle extends AbstractOracleMapper
 						+ "gmt_create, gmt_modified) SELECT ?, ?, count(*), ?, ?, ?, ?, ? FROM config_info WHERE tenant_id=NVL(?, '"+NamespaceUtil.getNamespaceDefaultId()+"')",
 				paramList);
 	}
+
 }
